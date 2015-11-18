@@ -1,18 +1,32 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <h1>Egersund klatreklubb sine nye sider kommer her. </h1>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+<?php
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+ini_set('default_charset', 'UTF-8');
+
+include_once 'configuration.php';
+include_once './resources/library/Helper.php';
+session_start();
+
+//session_destroy();
+if(empty($_REQUEST['ajax'])){
+$router = new Router();
+
+$controller = new Controller($router);
+$controller->init();
+$controller->loadControllers();
+$controller->renderMain();
+
+}
+else{
+    $ajax = new Ajax();
+    
+    $ajax->init();
+    $ajax->loadControllers();
+    if(empty($_REQUEST['json'])){
+       echo  $ajax->registerModules();
+    }
+    else{
+       echo  $ajax->registerModules(true);
+    }
+}
+?>

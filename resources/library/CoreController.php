@@ -48,56 +48,44 @@ abstract class CoreController {
         
         
     }
-    
-   
-        
-    public function render(){
-        
-      //echo $this->tplFile ." render</br>";
-        
+      
+    public function render()
+    {
         $tpl = new Template($this->tplFile);
-        
-        ////print_r($this->user);
-        if($this->obj != null){
-            foreach($this->obj as $key => $value){
-                $tpl->set($key, $value);
-            }
-        }
-        //Språk
-        
-        $l = "modules/".$this->module."/lang/".$this->lang.".lang";
-        
-        if (!file_exists($l)) {
-            //return "Error loading languageFile file ($this->file).<br />";
-           //return;
-             
-           $l = "modules/".$this->module."/lang/no_nb.lang";
-            if(!file_exists($l)){
-               
-                return "Error loading languagefile.:". $this->lang.".lang, and the default languagefile.";
-            }
-            
-        }
-        
-        $langFile = fopen($l,"r");
-        while($data = fgets($langFile)){
-            if(strlen($data) > 3){
-            $tmp = explode("=", $data);
-           // print_r($tmp);
-           $tpl->set(trim($tmp[0]),trim($tmp[1]));
-            }
-            
-        }
-        
-        
+        $this->parseLanguage($tpl);
         foreach($this->params as $key => $value){
             $tpl->set($key, $value);
         }
         
         return $tpl->output($this);
-        
+    }
     
+    private function parseLanguage($tpl)
+    {
+        if($this->obj != null){
+            foreach($this->obj as $key => $value){
+                $tpl->set($key, $value);
+            }
+        }
         
+        //Språk
+        $l = "modules/".$this->module."/lang/".$this->lang.".lang";
+        if (!file_exists($l))
+        {          
+            $l = "modules/".$this->module."/lang/no_nb.lang";
+            if(!file_exists($l))
+            {  
+                return;// "Error loading languagefile.:". $this->lang.".lang, and the default languagefile.";
+            }
+        }
+        $langFile = fopen($l,"r");
+        while($data = fgets($langFile)){
+            if(strlen($data) > 3)
+            {
+                $tmp = explode("=", $data);
+                $tpl->set(trim($tmp[0]),trim($tmp[1]));
+            }  
+        }
     }
     
     private function performAction(){
