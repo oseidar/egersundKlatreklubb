@@ -1,12 +1,12 @@
 <?php
 class Configuration{
-    const dbPass = "AZjTcu9S";
-    const dbUrl = "mysql:host=magmageopark.mysql.domeneshop.no;dbname=magmageopark;";
-    const dbUser = "magmageopark";
+    const dbPass = "rsM2QYGborfFXse";
+    const dbUrl = "mysql:host=egersundklatrekl.mysql.domeneshop.no;dbname=egersundklatrekl;";
+    const dbUser = "egersundklatrekl";
     const admLevel = 2;
-    const baseUrl = "http://www.dwk.no/cragTopos/";
+    const baseUrl = "http://www.egersundklatreklubb.no";
     const defaultLang = "no_nb";
-    const defaultTitle = ".:Magma Geopark:.";
+    const defaultTitle = ".:Egersund Klatre og Tindeklubb:.";
     
 
 }

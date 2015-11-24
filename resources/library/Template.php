@@ -50,7 +50,8 @@ class Template {
     }
     
     public function output($object=NULL) {
-        if (!file_exists($this->file)) {
+        if (!file_exists($this->file)) 
+        {
             return "Error loading template file ($this->file).<br />";
         }
         $output = file_get_contents($this->file);

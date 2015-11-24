@@ -50,7 +50,7 @@ abstract class CoreController {
     }
       
     public function render()
-    {
+    {   
         $tpl = new Template($this->tplFile);
         $this->parseLanguage($tpl);
         foreach($this->params as $key => $value){
