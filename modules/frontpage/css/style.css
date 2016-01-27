@@ -8,3 +8,46 @@ and open the template in the editor.
     Author     : Idar
 */
 
+#frontPage .table
+{
+    width: 950px;
+    min-height: 400px;
+}
+#rightColumn
+{   
+    padding: 3px;
+    width: 250px;
+    border-left: 1px solid #ccc;
+}
+
+.rightBoxTitle
+{
+    background-color: #ccc;
+    padding: 3px;
+}
+.rightBoxTitle h4
+{
+    margin: 0;
+    padding: 0;
+}
+
+.rightBox
+{   
+    width: 224px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    margin-bottom: 5px;
+}
+
+.rightBox ul
+{
+    padding: 0;
+    margin: 0;
+}
+.rightBoxContent
+{
+    padding: 4px;
+}

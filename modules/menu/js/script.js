@@ -5,3 +5,14 @@
  */
 
 
+//alert("test")
+
+function displaySubmenu(elementId)
+{
+    $(elementId).show(200);
+
+}
+function hideSubmenu(elementId)
+{
+    $(elementId).hide(100);
+}

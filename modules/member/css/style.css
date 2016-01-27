@@ -8,3 +8,161 @@ and open the template in the editor.
     Author     : Idar
 */
 
+#myDetails
+{
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    padding:10px;
+    width: 918px;
+    
+}
+
+#editMyDetailsBtn
+{   
+    opacity: 0.6;
+    left:200px;
+    background-image: url(../../../resources/images/icons/page_edit.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    height:26px;
+    width: 26px;
+    text-indent: -5000px;
+    cursor: pointer;
+}
+
+#editMyDetailsBtn:hover
+{
+    opacity: 1.0;
+}
+#editMyDetailsBtn:active
+{
+    border: 1px solid #ccc;
+    height: 24px;
+    width: 24px;
+}
+
+.confirmBtn
+{   
+    cursor: pointer;
+    opacity: 0.6;
+    height: 26px;
+    width: 26px;
+    background-image: url(../../../resources/images/icons/add.png);
+    text-indent: -5000px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    top:-10px;
+    left:30px;
+}
+
+.confirmBtn:hover
+{
+    opacity: 1.0;
+}
+.confirmBtn:active
+{
+    opacity: 0.4;
+}
+
+.name
+{
+    display: inline-block;
+    width: 150px;
+    
+}
+.year
+{   
+    width: 100px;
+    padding: 10px 5px 0 5px;
+    display: inline-block;
+    
+}
+.memberType
+{   display: inline-block;
+    width: 100px;
+}
+
+#nonMemberTable
+{
+    width:370px;
+}
+
+.infoUl li
+{
+    padding: 4px 10px 4px 5px;
+}
+
+#membershipInfoDisplay
+{
+ margin-top: 10px;   
+}
+.notPaid
+{
+    padding: 2px;
+    width: 80px;
+    margin-left: 20px;
+    color:#990000;
+    background-color: #ffcccc;
+    border:1px solid #cc7777;
+    cursor: pointer;
+}
+
+#adminContent .member,#adminContent .paid{
+    padding: 2px;
+    width: 80px;
+    margin-left: 20px;
+    color:#006600;
+    background-color: #ccffcc;
+    border:1px solid #006600;
+}
+
+.notMember{
+    padding: 2px;
+    width: 189px;
+    margin-left: 20px;
+    color:#aa7700;
+    background-color: #ffffcc;
+    border:1px solid #aa7700;
+    
+}
+.parentSpan{
+    width: 173px;
+}
+
+.childSpan
+{
+    width: 150px;
+}
+.childDiv{
+    padding-left: 20px;
+    
+}
+.memberContainer{
+    padding: 3px;
+    border:1px solid #999;
+    border-radius: 4px;
+    margin: 3px;
+    background-color: #cecece;
+}
+
+.listHeader{
+    font-size: 12px;
+    color: #777;
+    padding: 4px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.memberItem{
+    border: 1px solid #999;
+    background-color: #ababab;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 3px;
+}
+
+#adminButtonRow
+{
+    padding: 10px;
+}

@@ -77,9 +77,6 @@ class Controller
                 $_POST[$key] = trim($_POST[$key]);
             }
         }
-        $this->router->params['rightColumn'] = "";
-        $this->router->params['footer'] = "<a style='text-decoration:none;font-size:12px' href='?module=user&action=login&view=loginForm&id='>copyright &copy; Magmageopark</a>";
-        $this->router->params['topMenu'] = "<a href=''>Contact</a>";
     }
 
     public function init()
@@ -183,19 +180,17 @@ class Controller
 
     public function checkUserAuth()
     {
-
         $user = User::authenticate();
         if (!empty($this->user))
         {
             $this->user = new User(0);
             $this->user->setFirstName("John");
             $this->user->setLastName("Doe");
-            $this->user->setUserlevel(6);
+            $this->user->setUserLevel(6);
         }
     }
 
-    public
-            function renderMain()
+    public function renderMain()
     {
         $mainTpl = "";
 
@@ -205,7 +200,7 @@ class Controller
          * Hack for frontend admin menu...
          */
         $this->router->params['adminMenu'] = "";
-        if ($this->user->userlevel < 2)
+        if ($this->user->userLevel < 2)
         {
 
             $menu = "<ul class='menuUl'>";
@@ -236,7 +231,7 @@ class Controller
             $this->router->params['title'] = Configuration::defaultTitle;
         }
         foreach ($this->router->params as $key => $value)
-        {
+        {   
             $template->set($key, $value);
         }
 
@@ -245,25 +240,17 @@ class Controller
 
     public function registerModules()
     {
-
-        //print_r("Kjøring av registerModules");
-        /*
-         * Starter alltid med å hente de første modulene... .
-         */
-        //echo "Username: + ".$this->user->username;
-
-
         if (empty($this->module))
         {
             // dersom vi ikke har moduler henter vi fremsiden... 
 
             $fp = new Frontpage_controller($this->user, $this);
+            $this->module = "frontpage";
             $this->router->params["content"] = $fp->render();
             $this->router->params["breadCrumbs"] = "Forsiden";
         }
         else
         {
-
             try
             {
                 $classname = ucfirst($this->module) . "_controller";
@@ -322,16 +309,14 @@ class Controller
             $this->user->setLastName("Doe");
             $this->user->setUserlevel(6);
         }
-        //print_r($this->user);
+        /*Building the menu*/
         $mc = new Menu_controller($this->user, $this);
-
         $mc->setTplFile("modules/menu/view/default.tpl");
-
         $this->router->params["menu"] = $mc->render();
 
         //adding script and css
-        $this->router->params['moduleScript'] = "<script type='text/javascript' src='" . Configuration::baseUrl . "/modules/" . $_REQUEST['module'] . "/js/script.js'></script>";
-        $this->router->params['moduleCss'] = "<link type='text/css' rel='stylesheet' href='" . Configuration::baseUrl . "/modules/" . $_REQUEST["module"] . "/css/style.css' />";
+        @$this->router->params['moduleScript'] = "<script type='text/javascript' src='" . Configuration::baseUrl . "/modules/" . $this->module . "/js/script.js'></script>";
+        @$this->router->params['moduleCss'] = "<link type='text/css' rel='stylesheet' href='" . Configuration::baseUrl . "/modules/" . $this->module . "/css/style.css' />";
     }
 
     private function renderModules()

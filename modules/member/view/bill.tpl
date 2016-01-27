@@ -3,9 +3,9 @@
     <head>
         <title>[@title]</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="app/css/default.css" type="text/css" media="all" rel="stylesheet"/>
-        <link href="app/css/bill.css" type="text/css" media="screen" rel="stylesheet"/>
-        <link href="app/css/billPrint.css" type="text/css" media="print" rel="stylesheet"/>
+        <link href="resources/css/default.css" type="text/css" media="all" rel="stylesheet"/>
+        <link href="resources/css/bill.css" type="text/css" media="screen" rel="stylesheet"/>
+        <link href="resourcesp/css/billPrint.css" type="text/css" media="print" rel="stylesheet"/>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="app/js/ajax.js" type="text/javascript"></script>
     </head>
@@ -42,7 +42,7 @@
                      Ved manglende/utilstrekkelig innbetaling vil du/dere ikke bli merket som betalende medlemmer før betaling/restbetaling er betalt.</p>
                  <h3>Viktig:</h3>
                  <p><strong>Vi gjør dere her  oppmerksomme på §3, §4 og §5 i 
-                     <a target="_blank" href="http://mccbase.dwk.no/public/lov.pdf">Lov for Egersund Klatre og Tindeklubb</a> 
+                     <a target="_blank" href="http://www.egersundklatreklubb.no/public/documents/lov.pdf">Lov for Egersund Klatre og Tindeklubb</a> 
                      som omhandler medlemskap, kontingent og stemmerett/valgbarhet.  </strong></p>
             </div>
             <h3>Betalingen gjelder følgende medlemmer:</h3>

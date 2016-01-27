@@ -6,3 +6,7 @@
  * and open the template in the editor.
  */
 
+class News_controller extends CoreController
+{
+    
+}

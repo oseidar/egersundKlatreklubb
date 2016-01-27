@@ -8,3 +8,30 @@ and open the template in the editor.
     Author     : Idar
 */
 
+#subMenuMembership
+{
+    
+    min-width: 100px;
+    min-height: 50px;
+    padding: 5px 10px 10px 10px;
+    font-size: 12px;
+    left:15px;
+    display:none;
+}
+
+.submenu
+{
+    position: absolute;
+    background-color: #bbb;
+    z-index: 0;
+}
+
+#subMenuMembership ul
+{
+    float: none;
+}
+
+#subMenuMembership a 
+{
+    font-size: 12px;
+}

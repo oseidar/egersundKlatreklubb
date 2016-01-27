@@ -1,7 +1,13 @@
-<div>
-    <h2>Ny hjemmeside.. </h2>
-    <p>
-        Våre nye sider er nå under oppføring.  Vi håper på 
-        å kunne ta de i bruk innen årsskiftet. (2015/2016) 
-    </p>
+<div id="frontPage">
+    <div class="table">
+        <div class="row">
+            <div id="leftColumn" class="cell">
+                [@newsArticles]
+            </div>
+            <div id="rightColumn" class="cell">
+                [@displayContactInfo()]
+                [@calendar]
+            </div>
+        </div>
+    </div>
 </div>

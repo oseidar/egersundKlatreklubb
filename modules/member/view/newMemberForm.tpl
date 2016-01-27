@@ -39,7 +39,7 @@
                     regional:"no",
                     changeMonth: true,
                     changeYear: true,
-                    format:"yy-mm-dd",
+                    dateFormat:"yy-mm-dd",
                     yearRange:"1940:2012",
                     defaultDate:$("#bDate").val()
 

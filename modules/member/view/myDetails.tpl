@@ -2,7 +2,7 @@
     <div class="row">
         <div class="cell">
             <div class="myDisplayWrapper relative">
-                <div class="absolute editBtn" id="editMyDetailsBtn" onclick="getMyDetailsForm()">[/]</div>    
+                <div class="absolute editBtn" id="editMyDetailsBtn" title="Rediger din informasjon" onclick="getMyDetailsForm()">[/]</div>    
             <h4>Kontaktperson info</h4>
                 <ul class="infoUl">
                     <li>
@@ -31,7 +31,7 @@
             
             <div class="myDisplayWrapper">
                 
-                <h4 class="inlineBlock">Mitt medlemskap</h4><button onclick="resetMemberShips([@memberId])">Nullstill medlemskap</button>
+                <h4 class="inlineBlock" style="margin-right: 30px;">Mitt medlemskap</h4><button title="Nullstill alle medlemskap dette året. Går kun for de som ikke er registrert betalt." onclick="resetMemberShips([@memberId])">Nullstill medlemskap</button>
                     <div id="myMembershipDetails">
                         
                         [@getCurrentStatus()]

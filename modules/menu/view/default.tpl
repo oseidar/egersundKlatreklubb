@@ -4,15 +4,20 @@
     </li>
     <li>
         <a href="?module=member&action=myMembership&view=default">Arrangementer</a>
+        [@subMenuArrangements()]
     </li>
     <li>
-        <a href="?module=member&action=myMembership&view=default">Aktivitet</a>
+        <a href="?module=member&action=myMembership&view=default" >Aktivitet</a>
+        [@subMenuActivities()]
     </li>
-    <li>
+    <li onmouseenter="displaySubmenu('#subMenuMembership');" onmouseleave="hideSubmenu('#subMenuMembership');">
         <a href="?module=member&action=getMe&view=myMembership&id=">Medlemskap</a>
+        [@subMenuMembership()]
     </li>
-        <li>
+    <li>
         <a href="?module=member&action=myMembership&view=default">Kontakt</a>
+        [@subMenuContact()]
     </li>
+    [@menuItemLogInnOut()]
    
 </ul>

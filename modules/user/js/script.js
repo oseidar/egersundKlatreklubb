@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-    alert("test");
+
 function loadInfo(elem){
     //console.log($("#myInfoContainer").is(':hidden'));
-    alert("test");
+    
     if(elem.id == "myInfoHeader"){
                 if($("#myInfoContainer").is(':hidden')){
                     $("#myInfoContainer").load("index.php?module=member&action=getDetails&view=myDetails&id=&ajax=true",function(){

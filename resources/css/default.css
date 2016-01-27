@@ -1,0 +1,526 @@
+/* 
+    Document   : default
+    Created on : 08.feb.2012, 09:53:37
+    Author     : idar
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+body{
+    font-family: Tahoma,sans-serif;
+    color:#555;
+    font-size: 11px;
+}
+
+h3{
+    font-family: Tahoma,sans-serif;
+    color: #333;
+    font-weight:lighter;
+    font-size: 14px;
+    
+}
+
+h4{
+    font-family: Tahoma,sans-serif;
+    color: #333;
+    font-weight:lighter;
+    font-size: 12px;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+
+#mainContent{
+    
+    border: 1px solid #ccc;
+    padding:2px;
+    margin: 10px auto 10px auto;
+    width: 800px;
+    
+}
+body{
+    background-color: #fbfbfb;
+}
+
+#menu{
+    background-color: #c6c6c6;
+    height: 25px;
+}
+
+#header{
+    
+    background-image: url(../img/design/header.jpg);
+    height: 150px;
+}
+
+#myMembership{
+    padding:25px;
+}
+
+.menuUl li{
+ float: left;
+ list-style-type: none;
+ 
+}
+
+.menuUl a{
+    padding: 3px 10px 3px  10px;
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: Tahoma,sans-serif;
+        
+}
+
+.menuUl a:hover{
+    color: #d0ffa4 ;
+    
+}
+
+.formUl{
+    list-style: none;
+}
+.formUl label{
+    display:block;
+    font-family: Tahoma,sans-serif;
+    color:#333;
+    margin-top: 10px;
+    font-size: 11px;
+}
+#loginFormDiv{
+    padding:20px;
+}
+#loginFormDiv p,#loginFormDiv a{
+    font-family: Tahoma,sans-serif;
+    color:#333;
+    margin-top: 10px;
+    font-size: 11px;
+}
+
+
+.infoItem{
+    border:1px solid #cbcbcb;
+    border-radius: 4px;
+    background-color: #dbdbdb;
+    padding: 4px;
+    margin-bottom: 3px;
+    
+    
+}
+.mHeader{
+    cursor: pointer;
+    color: #555;
+    font-size: 11px;
+    padding: 5px;
+    
+}
+.mHeader:hover{
+    color: #3e8625 ;
+}
+
+.myContainer{
+    border:1px solid #cbcbcb;
+    background-color: #e2e2e2;
+    padding: 4px;
+}
+
+.infoUl{
+    margin-left: 30px;
+    padding: 10px;
+}
+.infoUl li {
+    padding: 5px;
+    font-size: 11px;
+    list-style: none;
+}
+.myDisplayWrapper{
+    position: relative;
+}
+
+.table{
+    display: table;
+}
+.row {
+    display:  table-row;
+}
+
+.cell {
+    display: table-cell;
+}
+
+.myTable{
+    width:690px;
+    border-spacing: 10px;
+}
+.myTable .cell{
+    border: 1px solid #989898;
+    background-color: #ebebeb;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px #888;
+    
+}
+.name{
+    display: inline-block;
+    width: 100px;
+    
+}
+.year{
+    padding: 0 5px 0 5px;
+    display: inline-block;
+    width:30px;
+}
+.childLine{
+    padding: 4px;
+    border: 1px solid  #aaa;
+    background-color: #ddd;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+#formContentWrapper .formUl{
+    margin-left: 40px;
+}
+
+#formContentWrapper{
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#formContentWrapper input{
+    
+    width: 230px;
+    background-color: #fafafa;
+    border: 1px solid #ababab;
+    color: #333;
+    margin-bottom: 10px;
+    padding: 3px;
+    
+}
+.inlineBlock{
+    display: inline-block;
+    padding: 3px;
+    
+}
+
+.w500{
+    width: 500px;
+}
+
+.w450{
+    width: 450px;
+}
+.w350{
+    width: 350px;
+}
+.w300{
+    width: 300px;
+}
+
+.w200{
+    width: 200px;
+}
+.w150{
+    width: 150px;
+}
+
+.mb5{margin-bottom: 5px;}
+
+.w100{width: 100px;}
+.w20{width: 20px;}
+.w120{
+    width: 120px;
+}
+.w50{width: 50px;}
+.w70{
+    width: 70px;
+}
+.w170{width: 170px;}
+
+.pointer{cursor: pointer;}
+
+.editBtn:hover{
+    color: #00cc00;
+}
+
+.memberType{
+    width:90px;
+    display: inline-block;
+}
+.bold{
+    font-weight: bolder;
+}
+
+.relative{
+    position: relative;
+}
+.absolute{position: absolute}
+.editBtn{
+    
+    height: 25px;
+    width: 25px;
+    background-image: url(../img/design/edit.png);
+    text-indent: -2000px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.editBtn:hover{
+    background-image: url(../img/design/edit_over.png);
+}
+.editBtn:active{
+    background-image: url(../img/design/edit_active.png);
+}
+
+#editMyDetailsBtn{
+    top:-3px;
+    right: 10px;
+    height: 25px;
+    width: 25px;
+}
+.center{
+    text-align: center;
+}
+.middle
+{
+    vertical-align: middle;
+}
+.confirmBtn{
+      height: 25px;
+    width: 25px;
+    background-image: url(../img/design/add.png);
+    text-indent: -2000px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.confirmBtn:hover{
+    background-image: url(../img/design/add_over.png);
+}
+.confirmBtn:active{
+    background-image: url(../img/design/add_active.png);
+}
+
+#registerHint{
+    width: 350px;
+    padding: 10px;
+}
+#formCell{
+    width: 400px;
+    padding: 10px;
+}
+#registerTable{
+    margin: 20px auto 40px auto;
+    
+}
+.error{
+    color: #330000;
+    border:1px solid #330000;
+    background-color: #ff9999;
+    padding: 10px;
+}
+.valid{
+    color: #003300;
+    border:1px solid #003300;
+    background-color: #ccffcc;
+}
+.legendSpan{
+    font-size: 14px;
+}
+fieldset{
+    padding: 25px;
+}
+
+.memberContainer{
+    padding: 3px;
+    border:1px solid #999;
+    border-radius: 4px;
+    margin: 3px;
+    background-color: #cecece;
+}
+.childDiv{
+    padding-left: 20px;
+    
+}
+
+.memberItem{
+    border: 1px solid #999;
+    background-color: #ababab;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 3px;
+}
+
+.listHeader{
+    font-size: 12px;
+    color: #fff;
+    padding: 4px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.notPaid{
+    padding: 2px;
+    width: 80px;
+    margin-left: 20px;
+    color:#990000;
+    background-color: #ffcccc;
+    border:1px solid #cc7777;
+    cursor: pointer;
+}
+
+.notMember{
+    padding: 2px;
+    width: 80px;
+    margin-left: 20px;
+    color:#aa7700;
+    background-color: #ffffcc;
+    border:1px solid #aa7700;
+    
+}
+#adminContent .member,#adminContent .paid{
+    padding: 2px;
+    width: 80px;
+    margin-left: 20px;
+    color:#006600;
+    background-color: #ccffcc;
+    border:1px solid #006600;
+}
+
+.childSpan{
+    width: 150px;
+}
+.parentSpan{
+    width: 173px;
+}
+
+#mainCourseContainer{
+    border: 1px solid #999;
+    width: 750px;
+    background-color: #ebebeb;
+    padding: 10px;
+    margin: 10px auto 10px auto;
+    border-radius: 4px;
+    border-radius: 4px;
+}
+
+.courseItemWrapper{
+    border: 1px solid #aaa;
+    background-color: #f3f3f3;
+    padding: 5px;
+    
+}
+#content .courseItemWrapper{
+    
+    margin: 10px;
+    
+    
+}
+
+#courseButtons{
+    margin-bottom: 10px;
+    
+}
+
+.courseHeader{
+    cursor: pointer;
+    padding: 4px 0 10px 10px;
+}
+.courseDetailsWrapper .table{
+    border-spacing: 10px;
+    width: 700px;
+    margin: 10px auto 10px auto;
+}
+
+.courseDetailsWrapper ul{
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.courseDetailsWrapper .cell{
+    padding: 5px;
+    border: 1px solid #aaa;
+    background-color: #ebebeb;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px #ccc;
+}
+
+.freeSlot{
+    
+    background-color: #f2ffe7;
+    border: 1px solid #004400;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.confirmed{
+    background-color: #f2ffe7;
+    border: 1px solid #004400;
+    margin: 1px;
+    cursor: pointer;
+}
+
+#newFormContainer{
+    vertical-align: top;
+}
+
+.positiveButton{
+    display:  inline-block;
+    color: #004400;
+    background: rgba(200,255,200,0.4);
+    border: 1px solid #004400;
+    padding: 6px 10px;
+   
+}
+.positiveButton:hover{
+     box-shadow: 0 0 6px #66ff66;
+     background: rgba(200,255,200,1);
+}
+
+.vaTop{
+    vertical-align: top;
+}
+#courseTypeForm legend span {
+    font-size: 14px;
+    font-weight: bolder;
+    color:#222;
+}
+.formCellDiv{
+    padding: 10px;
+    position: relative;
+}
+.buttonWrapper{
+    position: absolute;
+    bottom: 5px;
+}
+
+#courseTypeForm{
+    height: 370px;
+    position: relative;
+}
+#courseTypeForm .buttonWrapper{
+    position: relative;
+    top:20px;
+    
+}
+.contentWrapper{
+    padding: 25px;
+}
+#messageFieldset label{
+    display: block;
+}
+
+#generalMessageInterfaceContainer{
+    
+    width: 90%;
+    border: 1px solid #ebebeb;
+    padding: 15px;
+    margin:15px auto 20px auto;
+    
+}

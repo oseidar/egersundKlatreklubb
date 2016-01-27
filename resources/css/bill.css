@@ -1,0 +1,69 @@
+/* 
+    Document   : bill
+    Created on : 11.mar.2012, 20:31:00
+    Author     : idar
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#bill{
+    
+}
+#billContainer{
+    
+    border:1px solid #ccc;
+    width: 550px;
+    height: 700px;
+    padding:1em;
+}
+
+#billTable{
+    width:500px;
+    
+}
+#billHeader{
+    width: 530px;
+}
+#billContainer #titleCell{
+    width: 350px;
+    vertical-align: bottom;
+}
+#billTable .cell{
+    padding:3px 10px 3px 20px;
+}
+
+#billContainer h2{
+    color:#333;
+}
+
+#sumLine{
+    margin-top: 10px;
+    padding:3px 0 0 17px;
+    border-bottom: double 3px #000;
+    border-top: 1px solid #000;
+}
+#sumTitle{
+    width: 407px;
+}
+
+#billContainer .title{
+    font-weight: bolder; 
+}
+#billContainer{
+    
+}
+
+#billHeader{
+    margin-bottom: 30px;
+    border-spacing: 10px;
+}
+
+#paymentInfoTable{
+    border-spacing: 3px;
+    border: 1px solid #333;
+    
+}
+#paymentInfoTable .cell{
+    padding: 20px;
+    font-size: 15px;
+    
+}
