@@ -47,6 +47,24 @@ function saveMyDetails()
     });
 }
 
+function openWallCodeForm()
+{
+    $("#membershipInfoDisplay").load("index.php?module=member&action=&view=newCodeForm&id=&ajax=true");
+}
+function saveNewCode()
+{
+    $.ajax({
+         url:"index.php?module=member&action=saveNewCode&view=blank&id=&ajax=true",
+         type:"POST",
+         data:$("#newCodeForm").serialize(),
+         success:function(data){
+             console.log(data);
+             $("#membershipInfoDisplay").load("index.php?module=member&action=&view=wallCodeUpdated&id=&ajax=true");
+         }
+        
+    });
+}
+
 function makeMeMember(id){
     
     $("#makeMeMemberContainer_"+id).load("index.php?module=member&action=prepareMembership&view=membershipForm&id="+id+"&ajax=true",function(){
@@ -55,6 +73,11 @@ function makeMeMember(id){
         
     });
     
+}
+
+function displayHelp( view )
+{
+    $("#membershipInfoDisplay").load("index.php?module=member&action=displayHelp&view="+ view +"&id=&ajax=true");
 }
 
 function confirmMembership(id){
@@ -251,4 +274,25 @@ function registerBrattkort(id,elem){
 function openYearForm()
 {
     $("#membershipInfoDisplay").load("index.php?module=member&action=confirmAdmin&view=addYearForm&id=&ajax=true");
+}
+
+function deleteThis(id)
+{   
+    var conf = confirm("Bekreft sletting av medlem. Dette kan ikke gjøres om!");
+    if(!conf)
+        return;
+    
+    $.ajax({
+         url:"index.php?module=member&action=deleteMember&view=blank&id="+id+"&ajax=true",
+         success:function(data){
+             console.log(data);
+            $("#membershipInfoDisplay").load("index.php?module=member&action=getChildren&view=myChildren&id=&ajax=true");
+         }
+    });
+}
+
+function editThis(id){
+   // console.log(id);
+    
+    $("#membershipInfoDisplay").load("index.php?module=member&action=prepareEditMember&view=editMemberForms&id="+id+"&ajax=true");
 }

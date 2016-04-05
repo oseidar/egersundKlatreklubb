@@ -88,8 +88,14 @@ success: function(label) { label.text('OK!').addClass('valid');
         <div id="registerHint" class="cell">
             <h3 style="color:#cc0000">Viktig informasjon:</h3>
             <ol>
-                <li>Du <strong>MÅ </strong> bruke datovelgeren eller skrive inn dato på dette formatet: <strong>YYYY-MM-DD</strong><br><br>
-                    
+                <li style="color: #cc0000">
+                    Dersom du skal registrere noen du er foreldre/foresatt for, skal du som foreldre/foresatt 
+                    registrere deg selv i dette steget. Den som skal være aktiv medlem, legger du inn etterpå, inne i selve systemet.<br>
+                    Dette for at vi skal ha kontaktinformasjon til foreldre/foresatt tilgjengelig. <br>
+                    NB: Du blir <strong>ikke</strong> automatisk medlem, selv om du legger inn din info her.
+                </li>
+                <li>
+                    Du <strong>MÅ </strong> bruke datovelgeren eller skrive inn dato på dette formatet: <strong>YYYY-MM-DD</strong><br><br>
                 </li>
                 <li>
                     Har du problemer med å registrere deg? Send personalia til: <span id='mailAddress'></span><br>

@@ -6,6 +6,6 @@
     <div class="inlineBlock w200">[@email]</div> 
     <div class="inlineBlock w70">[@phone]</div> 
     <div class="inlineBlock w50" title="Klubb">[@club]</div>
-    <div class="editBtn pointer inlineBlock w20" title="Rediger medlem" onclick="editThis([@memberId])">[/]</div>
-    <div class="deleteBtn pointer inlineBlock w20" title="Slettr medlem" onclick="deleteThis([@memberId])">[x]</div>
+    <div class="editBtn pointer inlineBlock w20" title="Rediger medlem?" onclick="editThis([@memberId])">[/]</div>
+    <div class="deleteBtn pointer inlineBlock w20" title="Slette medlem?" onclick="deleteThis([@memberId])">[x]</div>
 </div>

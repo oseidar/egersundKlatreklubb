@@ -288,7 +288,7 @@
 	 * use captcha image to validate subscription it requires GD library installed
 	 * @global int $g_signup_use_captcha
 	 */
-	$g_signup_use_captcha	= ON;
+	$g_signup_use_captcha	= OFF;
 
 	/**
 	 * absolute path (with trailing slash!) to folder which contains your TrueType-Font files

@@ -23,7 +23,13 @@ class Member_controller extends CoreController
         {
             $this->member = $_SESSION['member'];
         }
-        elseif ($this->controller->view != "loginForm" && $this->controller->action != "register" && $this->controller->action != "doLogin" && $this->controller->view != "requestPassword" && $this->controller->action != "requestPassword")
+        elseif ($this->controller->view != "loginForm" &&
+                $this->controller->action != "register" &&
+                $this->controller->action != "doLogin" &&
+                $this->controller->view != "requestPassword" &&
+                $this->controller->action != "requestPassword" &&
+                $this->controller->view != "thankYou" &&
+                $this->controller->view != "mailExists")
         {
             header("location:?module=member&action=prepareLogin&view=loginForm");
         }
@@ -45,6 +51,9 @@ class Member_controller extends CoreController
         {
             $save = false;
         }
+
+
+
         if ($_REQUEST['password'] != $_REQUEST['password2'])
         {
             return false;
@@ -62,13 +71,14 @@ class Member_controller extends CoreController
             return false;
         }
 
+        
         if (Member::checkMail($_REQUEST['mail']) > 0)
-        {
+        {   
+            header("location:?module=member&action=&view=mailExists");    
             return false;
         }
 
         $member = new Member(0);
-        //print_r($_REQUEST['password']);
         $member->setBirthDate(date("Y-m-d", strtotime($_REQUEST['dob'])));
         $member->firstName = $_REQUEST['firstname'];
         $member->lastName = $_REQUEST['lastname'];
@@ -459,17 +469,13 @@ class Member_controller extends CoreController
 
     public function saveMemberShip()
     {
-
         $my = new MemberYear();
-
-
         $my->setPaid(0);
         $my->setYear(MemberYear::getCurrentYear());
         $my->setMemberId($this->controller->id);
         $my->setType($_REQUEST['type']);
         if ($my->save())
         {
-
             $this->params['content'] = "Medlemskap opprettet";
         }
         else
@@ -513,7 +519,6 @@ class Member_controller extends CoreController
     {
         $mail = $_REQUEST['mail'];
         $firstName = $_REQUEST['firstName'];
-
         $member = Member::getByMail($mail, $firstName);
         if ($member->getMemberId() == NULL || $member->getMemberId() == 0)
         {
@@ -537,12 +542,12 @@ class Member_controller extends CoreController
             {
                 if ($member->changePassword())
                 {
-                    $this->params['content'] = "Passordet ditt ble oppdatert";
+                    $this->params['content'] = "<div class='info'>Passordet ditt ble oppdatert. "
+                            . "Merk: Siden mailen er generert, kan den havne i søppel-post mappen. "
+                            . "Sjekk den dersom mail ikke kommer i løpet av få sekunder</div>";
                 }
             }
         }
-
-        //
     }
 
     public function resetMemberships()
@@ -776,13 +781,13 @@ class Member_controller extends CoreController
                 $bkStatus = "<span id='cardBtn_" . $value->memberId . "' title='klikk for å merke med brattkort'  class='notPaid inlineBlock'  onclick='registerBrattkort(" . $value->memberId . ",this)'>Ikke brattkort.</span>";
             }
 
-            $str .= "<div> <span class='inlineBlock parentSpan'>$count " . $value->firstName . " " . $value->lastName . " </span>$currStat $bkStatus</div>";
+            $str .= "<div> <span class='inlineBlock parentSpan'>$count " . Helper::utf($value->firstName) . " " . Helper::utf($value->lastName) . " </span>$currStat $bkStatus</div>";
             $count++;
 
             foreach ($value->getChildren() as $child)
             {
                 $status = $child->getCurrentStatus();
-                
+
                 $length = count($status);
                 $skipPayment = FALSE;
                 if ($length < 2)
@@ -803,7 +808,7 @@ class Member_controller extends CoreController
                     $currStat .= " <span id='payBtn_" . $child->memberId . "' title='klikk for å merke betalt' class='notPaid inlineBlock'  onclick='registerPayment(" . $status['year'] . "," . $child->memberId . ",this)'>Ikke betalt.</span>";
                 }
                 #Brattkort.. 
-                
+
                 if ($child->brattkortStatus == 1)
                 {
                     $bkStatus = "<span class='paid inlineBlock'>Har brattkort</span>";
@@ -813,7 +818,7 @@ class Member_controller extends CoreController
                     $bkStatus = "<span id='cardBtn_" . $child->memberId . "' title='klikk for å merke brattkort'  class='notPaid inlineBlock'  onclick='registerBrattkort(" . $child->memberId . ",this)'>Ikke brattkort.</span>";
                 }
 
-                $str .= "<div class='childDiv'><span class='inlineBlock childSpan'> $count " . $child->firstName . " " . $child->lastName . " </span> $currStat $bkStatus</div>";
+                $str .= "<div class='childDiv'><span class='inlineBlock childSpan'> $count " . Helper::utf($child->firstName) . " " . Helper::utf($child->lastName) . " </span> $currStat $bkStatus</div>";
 
                 $count++;
             }
@@ -891,17 +896,166 @@ class Member_controller extends CoreController
             return "Connection failed: " . $e->getMessage();
         }
     }
+
     public function getAdminButtons()
     {
         $this->secureAdmin();
-        
+
         $tpl = new Template("./modules/member/view/adminButtons.tpl");
         return $tpl->output();
-        
     }
-    
+
     public function confirmAdmin()
     {
         $this->secureAdmin();
     }
+
+    public function displayHelp()
+    {
+        
+    }
+
+    public function helpNavButtons()
+    {
+        $currentLocation = '';
+        switch ($this->controller->view)
+        {
+            case 'help_registerNewUser':
+                $currentLocation = "Velkommen";
+                break;
+            case 'help_EditUser':
+                $currentLocation = "Redigering av bruker";
+                break;
+            case 'help_addMember':
+                $currentLocation = "Legg til tilknyttet medlem";
+                break;
+            case 'help_editOrDeleteMember':
+                $currentLocation = "Rediger eller slette tilknyttet medlem";
+                break;
+            case 'help_makeMember':
+                $currentLocation = "Gjøre medlemmene om til medlemmer gjeldende år.";
+                break;
+            case 'help_error':
+                $currentLocation = "Hjelp jeg har gjort feil..";
+                break;
+            case 'help_payCurrentMembership':
+                $currentLocation = "Betale utestående medlemskap";
+                break;
+            default:
+                "no such site";
+        }
+
+        return "<div id='helpNavButtonContainer' ><a href='#' onclick=\"displayHelp('index')\">Innhold</a> - <span> $currentLocation </span></div>";
+    }
+
+    public function deleteMember()
+    {
+        $member = new Member($this->controller->id);
+        if ($member->parentId = $this->member->memberId)
+        {
+            if ($member->delete())
+            {
+                return "TRUE";
+            }
+            else
+            {
+                return "FALSE";
+            }
+        }
+    }
+    
+    public  function setNewPassword()
+    {   
+
+        $oldPass = filter_input(INPUT_POST, 'oldPass');
+        $oldPass = md5($oldPass);
+        $password = filter_input(INPUT_POST, 'password');
+        $password2 = filter_input(INPUT_POST, 'password2');
+        
+        if(!($this->member->getPassword() == $oldPass))
+        {   
+            $tpl = new Template("./modules/member/view/genericErrorBox.tpl");
+            $tpl->set("content","Gammelt passord stemmer ikke!");
+            $this->params['content'] =  $tpl->output();
+        }
+        if(!($password == $password2))
+        {
+            $tpl = new Template("./modules/member/view/genericErrorBox.tpl");
+            $tpl->set("content","Passordene er ikke like!");
+            $this->params['content'] =  $tpl->output();
+        }
+        
+        $this->member->setPassword($password);
+        $this->member->changePassword();
+        $tpl = new Template("./modules/member/view/genericInfoBox.tpl");
+        $tpl->set("content","Passordet ditt ble oppdatert!");
+        $this->params['content'] =  $tpl->output();
+    }
+    
+    public function saveNewCode()
+    {   
+        $this->confirmAdmin();
+        
+        $oldCode = filter_input(INPUT_POST, 'oldCode');
+        $newCode1 = filter_input(INPUT_POST, 'code1');
+        $newCode2 = filter_input(INPUT_POST, 'code2');
+        if($oldCode == $this->fetchWallCode() && $newCode1 = $newCode2 )
+        {   
+            try
+            {
+                $dbh = new PDO(Configuration::dbUrl, Configuration::dbUser, Configuration::dbPass, array(PDO::ATTR_PERSISTENT => true));
+                $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+                $sql = "INSERT INTO keyCode (keyCode, memberId) 
+                        VALUES (:value, :memberId);";
+                $stmt = $dbh->prepare($sql);
+                $stmt->bindParam(':value', $newCode1, PDO::PARAM_STR);
+                $stmt->bindParam(':memberId', $this->member->memberId, PDO::PARAM_STR);
+                $stmt->execute();
+                $this->params['content'] = "TRUE";
+                return;
+            }
+            catch (PDOExeption $e)
+            {
+               $this->params['content'] = "FALSE";
+               return;
+            }
+            
+        }
+        $this->params['content'] = "FALSE";
+        return;
+    }
+
+
+    public function getWallCode()
+    {   
+        if($this->member->hasWallAccess())
+        {
+            return $this->fetchWallCode();
+        }
+        else
+        {
+            return "No access";
+        }
+    }
+    
+    public function fetchWallCode()
+    {
+        try
+        {
+            $dbh = new PDO(Configuration::dbUrl, Configuration::dbUser, Configuration::dbPass, array(PDO::ATTR_PERSISTENT => true));
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+            $sql = "SELECT * FROM keyCode order by keyCodeId desc limit 1;";
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row['keyCode'];
+        }
+        catch (PDOExeption $e)
+        {
+           return FALSE;
+        }
+    }
+
 }

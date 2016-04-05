@@ -77,7 +77,7 @@
 		var $maxrotation = 30;
 		var $noise		= FALSE;
 		var $websafecolors = TRUE;
-		var $debug = FALSE;
+		var $debug = TRUE;
 
 		var $lx;				// width of picture
 		var $ly;				// height of picture

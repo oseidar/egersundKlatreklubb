@@ -497,7 +497,7 @@ class Member
             $dbh = new PDO(Configuration::dbUrl, Configuration::dbUser, Configuration::dbPass, array(PDO::ATTR_PERSISTENT => true));
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
-            $sql = "select * from member where parentId = :id ; ";
+            $sql = "select * from member where parentId = :id and active = TRUE; ";
 
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':id', $this->memberId, PDO::PARAM_STR);
@@ -588,6 +588,34 @@ class Member
     public static function test()
     {
         return "dette er en test... ";
+    }
+    
+    public function hasWallAccess()
+    {   
+        $year = MemberYear::getCurrentYear();
+        
+        try
+        {
+            $dbh = new PDO(Configuration::dbUrl, Configuration::dbUser, Configuration::dbPass, array(PDO::ATTR_PERSISTENT => true));
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+            $sql = 'SELECT count(*) as nr FROM member m where m.hasBrattkort = TRUE AND m.memberId = :memberId AND '
+                    . '(SELECT count(*) FROM memberYear WHERE member_memberId = :memberId AND paid = TRUE AND `year` = :year ) ;';
+
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+            $stmt->bindParam(':memberId', $this->memberId, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $row['nr'];
+        }
+        catch (PDOExeption $e)
+        {
+
+            return "Kunne ikke  laste brukerdata: " . $e;
+        }
     }
 
     public function getNonMembers($year)
@@ -774,20 +802,39 @@ class Member
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
             $sql = "DELETE FROM memberYear WHERE member_memberId = :id AND `year` = :year AND paid = FALSE;";
-
-            //
             
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':id', $this->memberId, PDO::PARAM_INT);
             $stmt->bindParam(":year", $year, PDO::PARAM_STR);
-
-
             $stmt->execute();
         }
         catch (PDOExeption $e)
         {
 
             die("Kunne ikke  laste Bruker: " . $e);
+        }
+    }
+    
+    public function delete()
+    {
+        try
+        {
+            $dbh = new PDO(Configuration::dbUrl, Configuration::dbUser, Configuration::dbPass, array(PDO::ATTR_PERSISTENT => true));
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+            $sql = "DELETE FROM member WHERE memberId = :id;";
+
+            //
+            
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id', $this->memberId, PDO::PARAM_INT);
+            $stmt->execute();
+            return TRUE;
+        }
+        catch (PDOExeption $e)
+        {
+
+           return FALSE;
         }
     }
 

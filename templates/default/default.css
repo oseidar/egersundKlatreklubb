@@ -146,6 +146,10 @@ body ul
 {   
     display: block;
 }
+.formUl li 
+{
+    margin-bottom: 10px;
+}
 
 #myMembershipMenu
 {   
@@ -165,12 +169,13 @@ body ul
     vertical-align: middle;
     text-align: center;
     padding: 8px 10px 8px 10px;
-    text-shadow: 1px 1px 0 #aaa;
+    text-shadow: 1px 1px 0 #b2b2b2;
+    color: #353535;
 }
 
 .mHeader:hover
 {   cursor: pointer;
-    color: #bbb;
+    color: #cacaca;
     text-shadow: none;
 }
 
@@ -276,4 +281,14 @@ body ul
     background: -webkit-linear-gradient(top,  #666666 0%,#999999 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,  #666666 0%,#999999 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     box-shadow:  3px 3px 10px #444;
+}
+.info
+{
+    display: block;
+    padding:20px;
+    margin: 10px;
+    border: 1px solid #00497f;
+    color:  #00497f;
+    background-color: #bed7ff;
+    border-radius: 4px;
 }

@@ -25,6 +25,7 @@
                     </li>
                 </ul>
             <div id="myDetailsFormContainer" style="display: none"></div>
+            <div id="keyCodeContainer" class="info"> Koden til nøkkelboksen er: [@getWallCode()]</div>
             </div>
         </div>
         <div class="cell">

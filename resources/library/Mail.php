@@ -19,7 +19,7 @@ class Mail {
     public $fromName; 
     
     function __construct($to, $from, $message, $subject) {
-        print_r(getcwd());
+        //print_r(getcwd());
         $this->to = $to;
         $this->from = $from;
         $this->message = $message;

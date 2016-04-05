@@ -1,7 +1,7 @@
 <div id="loginFormWrapper">
     <form action="?module=user&action=login&view=default&id=" method="post" >
         
-        <ul>
+        <ul class="formUl" id="userLoginForm">
             <li>
                 <label for="mail">E-post: </label><input type="text" name="mail" id="mail">
             </li>
@@ -14,4 +14,6 @@
         </ul>
         
     </form>
+    Ikke registrert bruker? <a href="?module=user&action=prepareNewUser&view=registerForm&id=">Registrer deg nå</a>
+    
 </div>
